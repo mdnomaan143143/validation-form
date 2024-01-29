@@ -1,0 +1,103 @@
+<html> 
+<head>  <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <style>
+    .fromerror{ color: firebrick }
+    body { background-image: url(b4.jpg)}
+    
+    
+    
+    
+    </style>
+    
+    
+    
+    </head>
+<body> 
+  <br><br><br><br><center> <h2> <q>VALIDATION FORM </q></h2><br><br>
+<form action="login.html" name="myform" onsubmit="return validateForm()" method="post" > 
+   
+    <div class="formdesign" id="name">
+    Name : <input type="text" name="fname" required><span class="fromerror"><b></b></span>
+    </div><br>
+    
+    <div class="formdesign" id="email">
+    Email : <input type="email" name="femail" required><span class="fromerror"><b></b></span>
+    </div><br>
+    
+    <div class="formdesign" id="phone">
+    Phone : <input type="number" name="fphone" required><span class="fromerror"><b></b></span>
+    </div><br>
+    
+    <div class="formdesign" id="pass">
+    password : <input type="password" name="fpass" required><span class="fromerror"><b></b></span>
+    </div><br>
+    
+    <div class="formdesign" id="cpass">
+    Confirm password : <input type="password" name="fcpass" required><span class="fromerror"><b></b></span>
+    </div><br><br>
+    
+     
+    <input type="submit" class="but" value="Submit">
+    
+    </form>
+</center>
+    </body>
+    
+    <script> 
+    function clearErrors()
+        {
+            errors=document.getElementsByClassName('fromerror');
+            for(let item of errors)
+                {
+                    item.innerHTML="";
+                }
+        }
+     function seterror(id,error)
+        {
+            element=document.getElementById(id);
+            element.getElementsByClassName('fromerror')[0].innerHTML=error;
+        }
+    function validateForm()
+        { 
+            var returnval=true;
+            clearErrors();
+            var name=document.forms['myform']["fname"].value;
+            if(name.length<5)
+                {
+                    seterror("name","The name is too short");
+                    returnval=false;
+                }
+            if(name.length==0)
+                {
+                    seterror("name","Enter your name");
+                    returnval=false;
+                }
+               var email=document.forms['myform']["femail"].value;
+            if(email.length>15)
+                {
+                    seterror("email","Please enter the valid email id");
+                    returnval=false;
+                }
+              var phone=document.forms['myform']["fphone"].value;
+            if(phone.length!=10)
+                {
+                    seterror("phone","Please enter the valid phone no");
+                    returnval=false;
+                }
+                var pass=document.forms['myform']["fpass"].value;
+            if(pass.length<5)
+                {
+                    seterror("pass","Please enter the valid password");
+                    returnval=false;
+                }
+                 var cpass=document.forms['myform']["fcpass"].value;
+            if(cpass!=pass)
+                {
+                    seterror("cpass","Please enter the valid confirm password");
+                    returnval=false;
+                }
+            
+        return returnval;
+        }
+        
+    </script>   
+</html>
